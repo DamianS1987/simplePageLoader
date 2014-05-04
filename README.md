@@ -44,3 +44,14 @@ var options = {
 
 //plugin init
 $("#loaderCanvas").simplePageLoader(options);
+
+The main function initiating the bar line is "notify" which updates the lines lenght by 1.
+All of the API for the plugin is available in the specified element's data - $("#loaderCanvas").data("simplePageLoader").
+e.g.:
+$("#loaderCanvas").data("simplePageLoader").loader_counter.notify();
+
+You may add an argument to the function and update it by any number.
+e.g.:
+$("#loaderCanvas").data("simplePageLoader").loader_counter.notify(33);
+
+As soon as the bar reaches 100 or above "resolve" is called and loader finishes it's work.

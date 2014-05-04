@@ -18,7 +18,6 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTH
 DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-
 // jQuery Plugin Boilerplate
 // A boilerplate for jumpstarting jQuery plugins development
 // version 1.1, May 14th, 2011
@@ -29,7 +28,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
     $.simplePageLoader = function(element, options) {
 
         var defaults = {
-            foo: 'bar',
             //activate callback function after each bar animation
             onBarMoveSwitch: true,
             onBarMove: function () {
@@ -42,6 +40,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
             },
             // elements appended to the loader
 	    	html: '<div class="lineLoader"><div class="lineColor"></div></div>',
+	    	// percentage counter
+	    	percentSwitch: true,
+	    	percentHtml: '<div class="percentCouter"><span>0</span>%</div>',
 	    	//append additional elements to the page
 	    	additionalAppend: "",
 	    	// animation duration on resolve
@@ -68,6 +69,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
              if (plugin.settings.additionalAppend !== "") {
              	$('#loaderCanvas').append(plugin.settings.additionalAppend);
              }
+             if (plugin.settings.percentSwitch) {
+             	$('#loaderCanvas').append(plugin.settings.percentHtml);
+             }
         }
 
 	    /**************/
@@ -77,6 +81,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 	        $('.lineColor').animate({
 	          width: $.loader_no + "%"
 	        }, plugin.settings.animDurationOnResolve , function () {
+
+	        	//update percentage
+	        	if (plugin.settings.percentSwitch) {
+	        		$('.percentCouter span').text($.loader_no);
+	        	}
 
 	          if ( plugin.settings.onBarMoveSwitch && !endBarMove) {
 	            plugin.settings.onBarMove();
@@ -111,11 +120,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 	      function( status ) {
 	        alert( "error: " + status + ", you fail this time. Reload the page." );
 	      },
+	      //notify
 	      function( status ) {
 	        $.loader_no++;
 
 	        if (!!status) {
-	          $.loader_no += status;
+	          $.loader_no += status -1;
 	          progressLine();
 
 	        } else {
@@ -131,7 +141,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 
         plugin.init();
 
-    }
+    };
 
     $.fn.simplePageLoader = function(options) {
         return this.each(function() {
@@ -140,5 +150,5 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
                 $(this).data('simplePageLoader', plugin);
             }
         });
-    }
+    };
 })(jQuery);
