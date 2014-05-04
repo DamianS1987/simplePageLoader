@@ -45,22 +45,19 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 	    	percentHtml: '<div class="percentCouter"><span>0</span>%</div>',
 	    	//append additional elements to the page
 	    	additionalAppend: "",
-	    	// animation duration on resolve
-	    	animDurationOnResolve: 3000	   
+	    	//animation duration
+	    	animationDuration: 200   
         };
 
         var plugin = this;
-
-        plugin.settings = {}
-
+        plugin.settings = {};
         var $element = $(element),
              element = element;
-
         plugin.init = function() {
             plugin.settings = $.extend({}, defaults, options);
             // code goes here
             elementAppend();
-        }
+        };
 
         var elementAppend = function() {
              $('#loaderCanvas').append(plugin.settings.html);
@@ -76,23 +73,26 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 
 	    /**************/
 	    /* Make Progessive changes to elements */
-	    function progressLine (endBarMove) {
+	    function progressLine (endBarMove, callback) {
 
 	        $('.lineColor').animate({
 	          width: $.loader_no + "%"
-	        }, plugin.settings.animDurationOnResolve , function () {
+	        }, plugin.settings.animationDuration , function () {
 
 	        	//update percentage
 	        	if (plugin.settings.percentSwitch) {
 	        		$('.percentCouter span').text($.loader_no);
 	        	}
 
-	          if ( plugin.settings.onBarMoveSwitch && !endBarMove) {
-	            plugin.settings.onBarMove();
-	          } else if ( plugin.settings.finishCallbackSwitch && !!endBarMove ) {
-
-	          	plugin.settings.onLoaderFinish();
-	          }
+	            if ( plugin.settings.onBarMoveSwitch && !endBarMove) {
+	              plugin.settings.onBarMove();
+	            } else if ( plugin.settings.finishCallbackSwitch && !!endBarMove ) {
+	          		plugin.settings.onLoaderFinish();
+	         	}
+	         	//callback function
+	          	if (!!callback) {
+	          		callback();       		 
+	          	}
 	        });
 	    }
 	    /***************/
@@ -121,15 +121,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 	        alert( "error: " + status + ", you fail this time. Reload the page." );
 	      },
 	      //notify
-	      function( status ) {
+	      function( status, callback ) {
 	        $.loader_no++;
 
 	        if (!!status) {
 	          $.loader_no += status -1;
-	          progressLine();
+	          progressLine(undefined, callback );
 
 	        } else {
-	          progressLine();    
+	          progressLine(undefined, callback );    
 	        }
 
 	        if ( $.loader_no >= 100 ) {

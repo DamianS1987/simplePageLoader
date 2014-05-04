@@ -5,6 +5,9 @@ The Simple Page Loader plugin provides you with a loading bar with additional ap
 In your project you only have to add  "div" element with id = "loaderCanvas". I've used Stefan Gabson's boilerplate for plugin creating,
 so you can follow his advice how to modify the plugin yourself.
 
+Example:
+
+
 To modify the default options of the plugin:
 
 var defaults = {
