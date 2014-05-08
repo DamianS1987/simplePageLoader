@@ -57,4 +57,9 @@ As soon as the bar reaches 100 or above "resolve" is called and loader finishes 
 
 To run the examples from the example folder run a server.
 
+> ================
+> Bower
 
+Bower package name is `simplePageLoader`.
+Run `bower info simplePageLoader` to list the available versions.
+Run `bower install simplePageLoader` to install the package with exmples.
