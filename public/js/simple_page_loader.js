@@ -33,6 +33,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
             onBarMove: function () {
             	console.log('bar finished its move!');
             },
+            //callback on notify
+            onNotify: function () {},
             //activate callback function after the last bar move
             finishCallbackSwitch: true,
             onLoaderFinish: function() {
@@ -73,7 +75,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 
 	    /**************/
 	    /* Make Progessive changes to elements */
-	    function progressLine (endBarMove, callback) {
+	    function progressLine (endBarMove, callback, no) {
 
 	        $('.lineColor').animate({
 	          width: $.loader_no + "%"
@@ -91,8 +93,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 	         	}
 	         	//callback function
 	          	if (!!callback) {
-	          		callback();       		 
+	          		callback();
 	          	}
+
+          		//trigger custom event
+        		$(element).trigger("loadBarMove",  no);
+
 	        });
 	    }
 	    /***************/
@@ -126,21 +132,26 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 
 	        if (!!status) {
 	          $.loader_no += status -1;
-	          progressLine(undefined, callback );
+	          progressLine(undefined, callback, $.loader_no );
 
 	        } else {
-	          progressLine(undefined, callback );    
+	          progressLine(undefined, callback, $.loader_no );
 	        }
 
 	        if ( $.loader_no >= 100 ) {
 	          plugin.loader_counter.resolve();
 	        }
+	        
 	      }
 	    );
 	    /*****************/
 
-        plugin.init();
+	    /* Add custom event that's going to be fired when notify is going to be fired */
+    	$(element).on("loadBarMove", function (e, param1) {
+    		plugin.settings.onNotify(e, param1);
+        });
 
+        plugin.init();
     };
 
     $.fn.simplePageLoader = function(options) {

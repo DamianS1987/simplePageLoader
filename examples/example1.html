@@ -1,0 +1,44 @@
+<html>
+<head>
+	<title>Simple Page Loading</title>
+
+	<link href="//fonts.googleapis.com/css?family=Dr Sugiyama&subset=latin" rel="stylesheet" type="text/css">
+	
+	<link href="//fonts.googleapis.com/css?family=Dancing Script&subset=latin" rel="stylesheet" type="text/css">
+
+	<style>
+	* {
+	 font-family: 'Dr Sugiyama', sans-serif;
+	}
+
+	#app *{
+	 font-family: 'Dancing Script', sans-serif;
+	}
+
+	</style>
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+	<div id="loaderCanvas"></div>
+
+	<div id="app">
+		<div class="welcome">
+			<p class="one">Welcome to jQuery Page Loader</p>
+			<p class="two">That was an example application of it.</p>
+			<p class="three">See my <a href="https://github.com/DamianS1987/simplePageLoader" target="_blank">github documentation page or <a target="_blank" href="http://dstefaniak.co.uk">my page</a> for more details.</a></p>
+		</div>
+		<div></div>
+	</div>
+
+</body>
+	<!-- Plugin dependencies: jquery - plugin tested on version 1.10.2 -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+	<!-- Add the plugin into your code -->
+	<script type="text/javascript" src="../public/js/simple_page_loader.js"></script>
+
+	<!-- Add you JavaScript code in here -->
+	<script type="text/javascript" src="app.js"></script>
+</html>

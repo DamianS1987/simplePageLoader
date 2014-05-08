@@ -7,7 +7,6 @@ so you can follow his advice how to modify the plugin yourself.
 
 Example:
 
-
 To modify the default options of the plugin:
 
 var defaults = {
@@ -58,3 +57,5 @@ e.g.:
 $("#loaderCanvas").data("simplePageLoader").loader_counter.notify(33);
 
 As soon as the bar reaches 100 or above "resolve" is called and loader finishes it's work.
+
+To run the examples from the example folder run a server.

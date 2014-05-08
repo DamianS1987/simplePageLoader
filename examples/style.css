@@ -1,0 +1,67 @@
+body {
+	padding: 0;
+	margin: 0;
+	background: #E0FFFD;
+	overflow: hidden;
+}
+
+#loaderCanvas {
+	width: 100%;
+	height: 100%;
+}
+
+#loaderCanvas .lineLoader {
+	position: relative;
+	width: 100%;
+	height: 10px;
+	overflow: hidden;
+}
+
+#loaderCanvas .lineColor {
+	background: #CC00A8;
+	width: 0%;
+	height: 100%;
+}
+
+.percentCouter {
+	text-align: center;
+	width: 100%;
+	font-size: 5em;
+
+	color: #FF4480;
+}
+
+.percentCouter span {
+	color: #FF4480;
+	text-shadow: 1px 2px 3px #409994;
+}
+
+
+#app * {
+	text-align: center;
+	font-size: 1.5em;
+	margin-top: 5%;
+	color: #CC00A8;
+}
+
+#app a {
+	text-decoration: none;
+}
+
+#app a:hover {
+	text-decoration: underline;
+}
+
+#app .one {
+	display: none;
+
+}
+
+#app .two {
+	display: none;
+}
+
+#app .three {
+	display: none;
+	font-size: 1.2em;
+}

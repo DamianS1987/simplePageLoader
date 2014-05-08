@@ -1,0 +1,22 @@
+{
+  "name": "SimplePageLoader",
+  "version": "0.1.0",
+  "authors": [
+    "damian <damianstefaniak1987@gmail.com>"
+  ],
+  "description": "The Simple Page Loader plugin provides you with a loading bar with additional api for you",
+  "main": "public/js/simple_page_loader.js",
+  "keywords": [
+    "page",
+    "loader",
+    "jquery"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
