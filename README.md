@@ -50,6 +50,11 @@ As soon as the bar reaches 100 or above "resolve" is called and loader finishes 
     //plugin init
     $("#loaderCanvas").simplePageLoader(options);
 
+    //callback on notify - after a change
+    $("#loaderCanvas").data("simplePageLoader").loader_counter.notify(40, function () {
+      console.log('my callback');
+    });
+
 To run the examples from the example folder run a server.
 
 
