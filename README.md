@@ -34,7 +34,7 @@ To modify the default options of the plugin:
     animDurationOnResolve: 3000	   
     };
 
-simply pass the options object to the init method.
+simply pass the options objject to the init method.
 
 E.g.:
 
