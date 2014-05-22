@@ -3,7 +3,7 @@
 
 The Simple Page Loader plugin provides you with a loading bar with additional api for you.
 
-In your project you only have to add  "div" element with `id = "loaderCanvas"`. [Stefan Gabson's boilerplate ](http://stefangabos.ro/jquery/jquery-plugin-boilerplate-revisited/)has been used to create this plugin.
+In your project you only have to add  "div" element with `id = "loaderCanvas"` with "div child element `class="lineLoader"` . [Stefan Gabson's boilerplate ](http://stefangabos.ro/jquery/jquery-plugin-boilerplate-revisited/)has been used to create this plugin.
 
 To modify the default options of the plugin:
 
