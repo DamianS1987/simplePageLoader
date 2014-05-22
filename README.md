@@ -5,8 +5,10 @@ The Simple Page Loader plugin provides you with a loading bar with additional ap
 
 In your project you only have to add  "div" element with `id = "loaderCanvas"`, with "div child element `class="lineLoader"`,  and with "div child element `class="lineColor"`.
 
-	<div class="lineLoader">
-		<div class="lineColor"></div>
+	<div id="loaderCanvas">
+		<div class="lineLoader">
+			<div class="lineColor"></div>
+		</div>
 	</div>
 
 To modify the default options of the plugin:
